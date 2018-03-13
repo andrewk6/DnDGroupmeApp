@@ -11,7 +11,7 @@ function respond() {
     botRegexRolld10 = /^roll d10$/
     botRegexRolld8 = /^roll d8$/
     botRegexRolld6 = /^roll d6$/
-    botRegexRolld4 = /^roll d4$/
+    botRegexRolld4 = /^(r|R)oll d4$/
     botRegexHelp = /^bot help$/;
 
     if (request.text && botRegexRolld20.test(request.text)) {
