@@ -24,7 +24,7 @@ function respond() {
     botRegexRolld4 = /^(r|R)oll d4$/
     botRegexRolldX = /^(r|R)oll d/
     botRegexHelp = /^bot help$/;
-    botRegexMon = /!monster/;
+    botRegexMon = /^!monster$/;
     botRegexNot = /don\'t.*go|can\'t.*come/
 
     if (request.text && botRegexRolld20.test(request.text)) {
@@ -101,17 +101,24 @@ function postMonster() {
 
 function postNot(name) {
     var msg = "";
-    if (name == "Auri-El") {
-        msg = "But who will cast Arms of Hadar then, We need our field obscuring darkness spells";
-    }else
-        msg = "Ishwar Guar: \"Bah who need " + name + ", I mean who needs any of you, you are all going to die anyways\"";
-    post(msg);
+    var rand = Math.floor(Math.random() * 100);
+    if (rand < 25) {
+        if (name == "Auri-El") {
+            msg = "But who will cast Arms of Hadar then, We need our field obscuring darkness spells";
+        } else
+            msg = "Ishwar Guar: \"Bah who need " + name + ", I mean who needs any of you, you are all going to die anyways\"";
+        post(msg);
+    }  
 }
 
 function postRand() {
     var rand = Math.floor(Math.random() * 100);
-    if (rand < 5)
+    if (rand < 5 && rand > 2)
         post("Rocks Fall Everyone Dies");
+    else if (rand == 2)
+        post("An earth elemental steps on your head to make sure your dead");
+    else if (rand == 1)
+        post("The world is a mimic, it sowly devourers you and all your friends");
 }
 
 function post(msg) {
@@ -212,7 +219,7 @@ function buildMonsters() {
         mons.push('Bugbear, Chief');
         mons.push('Bulette');
         mons.push('Bullywug');
-    }// B
+    }//B
     /*C*/{
         mons.push('Cambion');
         mons.push('Camel');
