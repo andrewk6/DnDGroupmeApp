@@ -95,7 +95,7 @@ function post(msg) {
     };
 
     body = {
-        "bot_id": "758b3d466c9f9c407f43f8cb74",
+        "bot_id": botID,
         "text": botResponse
     };
 
