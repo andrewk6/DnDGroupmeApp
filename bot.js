@@ -6,17 +6,18 @@ var botID = process.env.BOT_ID;
 function respond() {
     var request = JSON.parse(this.req.chunks[0]),
         botRegexRolld20 = /^roll d20$/
-    botRegexRolld20 = /^roll d20$/
-    botRegexRolld12 = /^roll d12$/
-    botRegexRolld10 = /^roll d10$/
-    botRegexRolld8 = /^roll d8$/
-    botRegexRolld6 = /^roll d6$/
+    botRegexRolld20 = /^(r|R)oll d20$/
+    botRegexRolld12 = /^(r|R)oll d12$/
+    botRegexRolld10 = /^(r|R)oll d10$/
+    botRegexRolld8 = /^(r|R)oll d8$/
+    botRegexRolld6 = /^(r|R)oll d6$/
     botRegexRolld4 = /^(r|R)oll d4$/
     botRegexHelp = /^bot help$/;
 
     if (request.text && botRegexRolld20.test(request.text)) {
         this.res.writeHead(200);
         postRoll(20);
+        console.log(request.text);
         this.res.end();
     } else if (request.text && botRegexRolld12.test(request.text)) {
         this.res.writeHead(200);
