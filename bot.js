@@ -17,7 +17,7 @@ function respond() {
     botRegexRolld4 = /^(r|R)oll d4$/
     botRegexRolldX = /^(r|R)oll d/
     botRegexHelp = /^bot help$/;
-    botRegexMon = /!monster/
+    botRegexMon = /!monster/;
 
     if (request.text && botRegexRolld20.test(request.text)) {
         this.res.writeHead(200);
@@ -63,6 +63,7 @@ function respond() {
         postMonster();
         this.res.end();
     } else {
+        postRand();
         console.log("don't care");
         this.res.writeHead(200);
         this.res.end();
@@ -76,13 +77,19 @@ function postRoll(roll) {
 }
 
 function postHelp() {
-    var postMsg = "Just say roll and then a d20-4 to get a random number\nMore to come...";
+    var postMsg = "R(r)oll dX: Where X = number will give a random number 1-X\n!monster: Will give a random Enemy from Monster Manual\nMore to come...";
     post(postMsg);
 }
 
 function postMonster() {
     var postMsg = "You encounter a " + getMonster();
     post(postMsg);
+}
+
+function postRand() {
+    var rand = Math.floor(Math.random() * 100);
+    if (rand < 5)
+        post("Rocks Fall Everyone Dies");
 }
 
 function post(msg) {
@@ -576,4 +583,5 @@ function buildMonsters() {
 function getMonster() {
     return monsts[Math.floor(Math.random() * monsts.length)];
 }
+
 exports.respond = respond;
