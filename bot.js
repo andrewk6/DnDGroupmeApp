@@ -34,7 +34,7 @@ function respond() {
         this.res.writeHead(200);
         postRoll(6);
         this.res.end();
-    } else if (request.text && botRegexRoll4.test(request.text)) {
+    } else if (request.text && botRegexRolld4.test(request.text)) {
         this.res.writeHead(200);
         postRoll(4);
         this.res.end();
