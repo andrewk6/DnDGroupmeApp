@@ -6,14 +6,6 @@ var monsts = buildMonsters();
 //Real Bot ID: 758b3d466c9f9c407f43f8cb74
 var botID = "d2ff99c679cbe52f62d7279646";
 
-setInterval(dailyPost, (86400 / 1000));
-
-function dailyPost() {
-    var msg = "Testing Daily";
-    post(msg);
-    postMonster();
-}
-
 function respond() {
     var request = JSON.parse(this.req.chunks[0]),
         botRegexRolld20 = /^roll d20$/
@@ -101,7 +93,11 @@ function postMonster() {
 }
 
 function postNot(name) {
-    var msg = "Ishwar Guar: \"Bah who need " + name + ", I mean who needs any of you, you are all going to die anyways\"";
+    var msg = "";
+    if (name == "Auri-El") {
+        msg = "But who will cast Arms of Hadar then, We need our field obscuring darkness spells";
+    }else
+        msg = "Ishwar Guar: \"Bah who need " + name + ", I mean who needs any of you, you are all going to die anyways\"";
     post(msg);
 }
 
