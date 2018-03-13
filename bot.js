@@ -5,24 +5,28 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/roll d20$/;
+        botRegexRolld20 = /^\/roll d20$/
+    botRegexRolld6 = /^\/roll d6$/;
 
-  if(request.text && botRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage();
-    this.res.end();
-  } else {
+    if (request.text && botRegexRolld20.test(request.text)) {
+        this.res.writeHead(200);
+        postMessage(20);
+        this.res.end();
+    } else if (request.text && botRegexRolld6.test(request.text)) {
+        this.res.writeHead(200);
+        postMessage(6);
+        this.res.end();
+    }else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
   }
 }
 
-function postMessage() {
+function postMessage(roll) {
     var botResponse, options, body, botReq;
-    var rand = Math.random() * 20;
-
-    botResponse = "Rolling D20: " + rand;
+    var rand = Math.random() * roll;
+    botResponse = "Rolling D" + roll + ": " + Math.ceil(rand);
 
   options = {
     hostname: 'api.groupme.com',
