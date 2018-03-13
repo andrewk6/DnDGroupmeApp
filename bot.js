@@ -6,6 +6,13 @@ var monsts = buildMonsters();
 //Real Bot ID: 758b3d466c9f9c407f43f8cb74
 var botID = "d2ff99c679cbe52f62d7279646";
 
+function daily() {
+    var msg = "Daily Value\n" + getMonster();
+    post(msg);
+}
+
+setInterval(daily, (86400 * 1000));
+
 function respond() {
     var request = JSON.parse(this.req.chunks[0]),
         botRegexRolld20 = /^roll d20$/
