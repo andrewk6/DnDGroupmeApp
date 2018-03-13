@@ -12,12 +12,12 @@ function respond() {
     botRegexRolld8 = /^(r|R)oll d8$/
     botRegexRolld6 = /^(r|R)oll d6$/
     botRegexRolld4 = /^(r|R)oll d4$/
+    botRegexRolldX = /^(r|R)oll d/
     botRegexHelp = /^bot help$/;
 
     if (request.text && botRegexRolld20.test(request.text)) {
         this.res.writeHead(200);
         postRoll(20);
-        console.log(request.text);
         this.res.end();
     } else if (request.text && botRegexRolld12.test(request.text)) {
         this.res.writeHead(200);
@@ -39,7 +39,18 @@ function respond() {
         this.res.writeHead(200);
         postRoll(4);
         this.res.end();
-    } else if (request.text && botRegexHelp.test(request.text)) {
+    } else if (request.text && botRegexRolldX.test(request.text)) {
+        this.res.writeHead(200);
+        var text = "" + request.text;
+        var roll = 0;
+        try {
+            roll = parseInt(text.split("d")[1]);
+            postRoll(roll);
+        } catch (err) {
+            console.log(err);
+        }
+        this.res.end();
+    }else if (request.text && botRegexHelp.test(request.text)) {
         this.res.writeHead(200);
         postHelp();
         this.res.end();
