@@ -18,6 +18,7 @@ function respond() {
     botRegexRolldX = /^(r|R)oll d/
     botRegexHelp = /^bot help$/;
     botRegexMon = /!monster/;
+    botRegexNot = /don\'t.*go|can\'t.*come/
 
     if (request.text && botRegexRolld20.test(request.text)) {
         this.res.writeHead(200);
@@ -58,9 +59,14 @@ function respond() {
         this.res.writeHead(200);
         postHelp();
         this.res.end();
-    } else if (request.text && botRegexMon.test(request.text)) {
+    } else if (request.text && botRegexHelp.test(request.text)) {
         this.res.writeHead(200);
-        postMonster();
+        postHelp();
+        this.res.end();
+    }else if (request.text && botRegexNot.test(request.text)) {
+        this.res.writeHead(200);
+        var name = "" + request.name;
+        postNot(name);
         this.res.end();
     } else {
         postRand();
@@ -84,6 +90,11 @@ function postHelp() {
 function postMonster() {
     var postMsg = "You encounter a " + getMonster();
     post(postMsg);
+}
+
+function postNot(name) {
+    var msg = "Ishwar Guar: \"Bah who need " + name + ", I mean who needs any of you, you are all going to die anyways\"";
+    post(msg);
 }
 
 function postRand() {
