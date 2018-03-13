@@ -21,7 +21,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = cool();
+  botResponse = "Testing.2";
 
   options = {
     hostname: 'api.groupme.com',
@@ -30,7 +30,7 @@ function postMessage() {
   };
 
   body = {
-    "bot_id" : botID,
+      "bot_id": "758b3d466c9f9c407f43f8cb74",
     "text" : botResponse
   };
 
