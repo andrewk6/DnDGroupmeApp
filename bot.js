@@ -25,9 +25,9 @@ function respond() {
     botRegexRolld6 = /^(r|R)oll d6$/
     botRegexRolld4 = /^(r|R)oll d4$/
     botRegexRolldX = /^(r|R)oll d/
-    botRegexHelp = /^bot help$/;
-    botRegexMon = /^!monster$/;
-    botRegexNot = /don\'t.*go|can\'t.*come/
+    botRegexHelp = /^bot help$/
+    botRegexMon = /^!monster$/
+    botRegexNot = /don\'t.*go|can\'t.*come/;
 
     if (request.text && botRegexRolld20.test(request.text)) {
         this.res.writeHead(200);
