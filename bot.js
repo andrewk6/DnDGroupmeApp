@@ -4,14 +4,16 @@ var monsts = buildMonsters();
 
 //Testing Bot ID: d2ff99c679cbe52f62d7279646
 //Real Bot ID: 758b3d466c9f9c407f43f8cb74
-var botID = "d2ff99c679cbe52f62d7279646";
+var botID = "758b3d466c9f9c407f43f8cb74";
 
+
+//TODO: Add in a sarcastic summary of past events spoken by Ishwar
 function daily() {
     var msg = "Daily Value\n" + getMonster();
     post(msg);
 }
 
-setInterval(daily, (86400 * 1000));
+//setInterval(daily, (86400 * 1000));
 
 function respond() {
     var request = JSON.parse(this.req.chunks[0]),
