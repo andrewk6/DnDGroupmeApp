@@ -68,9 +68,9 @@ function respond() {
         this.res.writeHead(200);
         postHelp();
         this.res.end();
-    } else if (request.text && botRegexHelp.test(request.text)) {
+    } else if (request.text && botRegexMon.test(request.text)) {
         this.res.writeHead(200);
-        postHelp();
+        postMonster();
         this.res.end();
     }else if (request.text && botRegexNot.test(request.text)) {
         this.res.writeHead(200);
